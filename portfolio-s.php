@@ -10,37 +10,22 @@ Author URI: http://systemo.biz
 */
 
 
-function cptui_register_my_cpt_project() {
-register_post_type('project', array(
-'label' => 'Проекты',
-'description' => '',
-'public' => true,
-'show_ui' => true,
-'show_in_menu' => true,
-'capability_type' => 'post',
-'map_meta_cap' => true,
-'hierarchical' => false,
-'rewrite' => array('slug' => 'projects', 'with_front' => 1),
-'query_var' => true,
-'has_archive' => true,
-'supports' => array('title','editor','excerpt','trackbacks','custom-fields','comments','revisions','thumbnail','author','page-attributes','post-formats'),
-'taxonomies' => array('post_tag'),
-'labels' => array (
-  'name' => 'Проекты',
-  'singular_name' => 'Проект',
-  'menu_name' => 'Проекты',
-  'add_new' => 'Add Проект',
-  'add_new_item' => 'Add New Проект',
-  'edit' => 'Edit',
-  'edit_item' => 'Edit Проект',
-  'new_item' => 'New Проект',
-  'view' => 'View Проект',
-  'view_item' => 'View Проект',
-  'search_items' => 'Search Проекты',
-  'not_found' => 'No Проекты Found',
-  'not_found_in_trash' => 'No Проекты Found in Trash',
-  'parent' => 'Parent Проект',
-)
-) ); 
+require_once 'inc/core.php';
+require_once 'inc/shortcode.php';
+
+
+register_activation_hook( __FILE__, 'activation_portfolio_s' );
+function activation_portfolio_s() {
+
+  //сброс правил перезаписи, чтобы ссылки открывались как следует
+  flush_rewrite_rules();
+
 }
-add_action('init', 'cptui_register_my_cpt_project');
+
+
+register_deactivation_hook( __FILE__, 'deactivation_portfolio_s' );
+function deactivation_portfolio_s() {
+
+  flush_rewrite_rules();
+
+}
