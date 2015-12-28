@@ -1,13 +1,14 @@
 <?php
 /*
-Plugin Name: sPortfolio
-Plugin URI: http://.../sportfolio (where should people go for this plugin?)
+Plugin Name: Portfolio by Systemo
+Plugin URI: https://github.com/systemo-biz/portfolio-s/
 Description: Portfolio by Systemo for public cases, projects and works
 Version: 0.1
 License: GPL
 Author: Systemo
 Author URI: http://systemo.biz
 */
+
 
 function cptui_register_my_cpt_project() {
 register_post_type('project', array(
