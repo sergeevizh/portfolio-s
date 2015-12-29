@@ -32,7 +32,8 @@ class Portfolio_SC_S
       	'meta_key'        => '',
       	'meta_value'      => '',
       	'post_parent'     => '',
-      	'post_status'     => 'publish',
+        'posts_per_page'  => get_option( 'posts_per_page' ),
+        'post_status'     => 'publish',
         'slides_per_view' => 5,
         'size'            => 'thumbnail',
         'show_title'      => '',
@@ -42,8 +43,8 @@ class Portfolio_SC_S
 
      $query = new WP_Query(array(
        'post_type'       => $post_type,
-       //'offset'          => $offset,
-       //'posts_per_page'  => get_option( 'posts_per_page' ),
+       'offset'          => $offset,
+       'posts_per_page'  => $posts_per_page,
        'category'        => $category,
        'orderby'         => $orderby,
        'order'           => $order,
@@ -57,7 +58,12 @@ class Portfolio_SC_S
 
      ob_start();
 
-     load_template( plugin_dir_path( __FILE__ )."templates/" . $template . ".php", false );
+     if ( $query->have_posts() ):
+      include( dirname( __FILE__ ) . '/templates/' . $template . ".php" );
+     else:
+      echo '<p>Нет данных</p>';
+     endif;
+
 
      wp_reset_postdata();
 

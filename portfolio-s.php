@@ -3,10 +3,13 @@
 Plugin Name: Portfolio by Systemo
 Plugin URI: https://github.com/systemo-biz/portfolio-s/
 Description: Portfolio by Systemo for public cases, projects and works
-Version: 0.1
 License: GPL
 Author: Systemo
 Author URI: http://systemo.biz
+GitHub Plugin URI: https://github.com/systemo-biz/portfolio-s/
+GitHub Branch: master
+Version: 20151229-1
+
 */
 
 
